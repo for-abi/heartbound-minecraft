@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Be My Valentine 💜</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@600&display=swap" rel="stylesheet">
+
+<style>
+* { box-sizing: border-box; }
+
+body {
+  margin: 0;
+  height: 100vh;
+  font-family: 'Quicksand', sans-serif;
+  background: linear-gradient(135deg, #3b0a57, #0f2e25);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  color: white;
+}
+
+.card {
+  position: relative;
+  width: 350px;
+  padding: 30px;
+  border-radius: 30px;
+  text-align: center;
+  background: linear-gradient(145deg, #5b1c87, #174f3d);
+  box-shadow: 0 0 40px rgba(180,100,255,0.4);
+  transition: 0.3s;
+}
+
+h1 {
+  margin-bottom: 15px;
+  font-size: 1.5rem;
+}
+
+img {
+  width: 200px;
+  border-radius: 20px;
+  margin: 15px auto;
+  display: block;
+  box-shadow: 0 0 25px rgba(255,150,255,0.4);
+}
+
+.buttons {
+  margin-top: 20px;
+  position: relative;
+  height: 60px;
+}
+
+button {
+  padding: 10px 20px;
+  border-radius: 999px;
+  border: none;
+  font-weight: bold;
+  cursor: pointer;
+  position: absolute;
+  transition: 0.3s ease;
+}
+
+#yes {
+  background: linear-gradient(135deg, #c084ff, #34f5c5);
+  color: #1a0f2a;
+  left: 30%;
+}
+
+#no {
+  background: #ffffff22;
+  color: white;
+  right: 30%;
+}
+
+.success {
+  font-size: 1.2rem;
+  margin-top: 20px;
+  animation: pop 0.5s ease forwards;
+}
+
+@keyframes pop {
+  from { transform: scale(0.5); opacity: 0; }
+  to { transform: scale(1); opacity: 1; }
+}
+
+.heart {
+  position: absolute;
+  animation: float 6s linear infinite;
+}
+
+@keyframes float {
+  from { transform: translateY(100vh); opacity: 0; }
+  to { transform: translateY(-10vh); opacity: 1; }
+}
+</style>
+</head>
+
+<body>
+
+<div class="card" id="card">
+  <h1>Will you be my Valentine? 💜</h1>
+
+  <!-- Replace with your own GIF if you want -->
+  <img src="https://media.giphy.com/media/3oriO0OEd9QIDdllqo/giphy.gif">
+
+  <div class="buttons">
+    <button id="yes" onclick="sayYes()">YES 💚</button>
+    <button id="no" onmouseover="moveNo()">NO 😭</button>
+  </div>
+</div>
+
+<script>
+
+function moveNo() {
+  const no = document.getElementById("no");
+  const x = Math.random() * 200 - 100;
+  const y = Math.random() * 40 - 20;
+  no.style.transform = `translate(${x}px, ${y}px)`;
+}
+
+function sayYes() {
+  const card = document.getElementById("card");
+  card.innerHTML = `
+    <h1>YAYYYYY 💜💚</h1>
+    <p class="success">
+      You just made me the happiest person alive 🥺💖
+    </p>
+  `;
+}
+
+/* floating hearts */
+setInterval(() => {
+  const h = document.createElement("div");
+  h.className = "heart";
+  h.innerText = Math.random() > 0.5 ? "💜" : "💚";
+  h.style.left = Math.random() * 100 + "vw";
+  h.style.fontSize = Math.random() * 10 + 16 + "px";
+  document.body.appendChild(h);
+  setTimeout(() => h.remove(), 6000);
+}, 700);
+
+</script>
+
+</body>
+</html>
